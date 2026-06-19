@@ -8,7 +8,7 @@ let budget = Number(localStorage.getItem("budget")) || 0;
 // displays remaining budget on screen 
 function updateDisplay() {
     const totalSpent = charges.reduce(function (sum, charge) {
-        return sum + charge;
+        return sum + charge.amount;
     }, 0);
 
     const remaining = budget - totalSpent;
@@ -28,8 +28,17 @@ document.querySelector("button").addEventListener("click", function () {
     // read charge input
     const charge = Number(document.querySelector("#chargeInput").value);
 
+    // get today's date
+    const today = new Date().toLocaleDateString();
+
+    // create a charge object
+    const newCharge = {
+        amount: charge,
+        date: today
+    };
+
     // add each charge to the list
-    charges.push(charge);
+    charges.push(newCharge);
 
     // save charges array and budget to local storage
     localStorage.setItem("charges", JSON.stringify(charges));
