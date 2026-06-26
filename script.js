@@ -31,14 +31,31 @@ function updateChargesList() {
     // clear list
     chargesList.textContent = "";
     // loop through charges array
-    for (const charge of charges) {
-        // create <li>
+    charges.forEach(function (charge, index) {
+        // create <li> (list item)
         const listItem = document.createElement("li");
         // fill with date and amount
-        listItem.textContent = charge.date + " - $" + charge.amount.toFixed(2);
-        // append <ul>
+        listItem.textContent = charge.date + " - $" + charge.amount.toFixed(2) + " ";
+        // create a button called "deleteButton"
+        const deleteButton = document.createElement("button");
+        // write "Delete" on that deleteButton
+        deleteButton.textContent = "Delete";
+        // upon clicking
+        deleteButton.addEventListener("click", function () {
+            // remove 1 element at current index
+            charges.splice(index, 1);
+            // update local storage 
+            localStorage.setItem("charges", JSON.stringify(charges));
+            // recalculate the remaining balance
+            updateDisplay();
+            // recreate the charges list
+            updateChargesList();
+        });
+        // append deleteButton to each <li>
+        listItem.appendChild(deleteButton);
+        // append <li> to <ul>
         chargesList.appendChild(listItem);
-    }
+    });
 
 }
 
