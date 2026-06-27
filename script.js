@@ -25,7 +25,7 @@ document.querySelector("#budgetInput").value = budget;
 // display saved remaining balance when page loads
 updateDisplay();
 
-// 
+// create and maintain the user's list of charges
 function updateChargesList() {
     const chargesList = document.querySelector("#chargesList");
     // clear list
@@ -106,5 +106,23 @@ document.querySelector("#toggleChargesButton").addEventListener("click", functio
         toggleButton.textContent = "Hide Charges";
     } else {
         toggleButton.textContent = "Show Charges";
+    }
+});
+// upon "Reset Month" button click
+document.querySelector("#resetMonthButton").addEventListener("click", function () {
+    // ask if user is sure they want to proceed
+    const confirmReset =confirm(
+        "Are you sure you want to reset the month? This will delete all charge history."
+    );
+    // if user selects "OK"
+    if (confirmReset) {
+        // set charges equal to an empty array
+        charges = [];
+        // save charges to local storage
+        localStorage.setItem("charges", JSON.stringify(charges));
+        // recalculate remaining budget
+        updateDisplay();
+        // rebuild the displayed charges list
+        updateChargesList();
     }
 });
