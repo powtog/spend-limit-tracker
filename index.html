@@ -2,30 +2,36 @@
 <html>
 <head>
     <title>Spend Limit Tracker</title>
+    <!-- link the style sheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Spend Limit Tracker</h1>
-    <p>Track your monthly credit card spending.</p>
 
-    <label for="budgetInput">Monthly budget:</label>
-    <input id="budgetInput" type="number" placeholder="500">
     
-    <label for="chargeInput">Charge amount:</label>
-    <input id="chargeInput" type="number" placeholder="12.50">
 
-    <button>
-        Add Charge
-    </button>
+        <h1>Spend Limit Tracker</h1>
 
-    <p id="budgetDisplay"></p>
+        <p>Remaining Budget:</p>
+        <!-- Show the remaining budget -->
+        <p id="budgetDisplay"></p>
 
-    <!-- show charges button -->
-    <button id="toggleChargesButton">Show charges</button>
+        <label for="budgetInput">Monthly budget:</label>
+        <input id="budgetInput" type="number" placeholder="500">
+        <button id="setBudgetButton">Set Budget</button>
+        
+        <label for="chargeInput">Charge amount:</label>
+        <input id="chargeInput" type="number" placeholder="12.50">
+        <button id="addChargeButton">Add Charge</button>
 
-    <ul id="chargesList" hidden></ul>
-    <!-- creates button for monthly reset -->
-    <button id="resetMonthButton">Reset Month</button>
+        <!-- show charges button -->
+        <button id="toggleChargesButton">Show charges</button>
+        <ul id="chargesList" hidden></ul>
+
+        <!-- creates button for monthly reset -->
+        <button id="resetMonthButton">Reset Month</button>
+
+    
     
     <script src="script.js"></script>
 </body>

@@ -17,7 +17,7 @@ function updateDisplay() {
     const remaining = budget - totalSpent;
 
     document.querySelector("#budgetDisplay").textContent = 
-        "Remaining: $" + remaining.toFixed(2);
+        "$" + remaining.toFixed(2);
 }
 // put saved budget back into the input box
 document.querySelector("#budgetInput").value = budget;
@@ -59,9 +59,8 @@ function updateChargesList() {
 
 }
 
-document.querySelector("button").addEventListener("click", function () {
-    // read budget input
-    budget = Number(document.querySelector("#budgetInput").value);
+document.querySelector("#addChargeButton").addEventListener("click", function () {
+    
     // read charge input
     const charge = Number(document.querySelector("#chargeInput").value);
 
@@ -79,7 +78,6 @@ document.querySelector("button").addEventListener("click", function () {
 
     // save charges array and budget to local storage
     localStorage.setItem("charges", JSON.stringify(charges));
-    localStorage.setItem("budget", budget);
 
     // update the screen
     updateDisplay();
@@ -89,7 +87,7 @@ document.querySelector("button").addEventListener("click", function () {
 
 });
 
-// uppon clicking "Show Charges" button:
+// upon clicking "Show Charges" button:
 document.querySelector("#toggleChargesButton").addEventListener("click", function () {
     // grab the charges list
     const chargesList = document.querySelector("#chargesList");
@@ -125,4 +123,13 @@ document.querySelector("#resetMonthButton").addEventListener("click", function (
         // rebuild the displayed charges list
         updateChargesList();
     }
+});
+// set budget button function
+document.querySelector("#setBudgetButton").addEventListener("click", function () {
+    // read budget input
+    budget = Number(document.querySelector("#budgetInput").value);
+    // saves budget input to local storage
+    localStorage.setItem("budget", budget);
+
+    updateDisplay();
 });
