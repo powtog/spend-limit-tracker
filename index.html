@@ -8,30 +8,42 @@
 
 <body>
 
-    
+    <div class="app">
+        <div class="header">
+            <h1>Spend Limit Tracker</h1>
+            <p>Track Your Monthly Credit Card Spending</p>
+        </div>
 
-        <h1>Spend Limit Tracker</h1>
+        <div class="remaining-balance">
+            <h2>Remaining Budget:</h2>
+            <!-- Show the remaining budget -->
+            <p id="budgetDisplay"></p>
+        </div>
 
-        <p>Remaining Budget:</p>
-        <!-- Show the remaining budget -->
-        <p id="budgetDisplay"></p>
+        <div class="charge-controls">
+            <!-- <label for="chargeInput">Charge amount:</label> -->
+            <input id="chargeInput" type="number" placeholder="Charge Amount">
+            <button id="addChargeButton">Add Charge</button>
+        </div>
 
-        <label for="budgetInput">Monthly budget:</label>
-        <input id="budgetInput" type="number" placeholder="500">
-        <button id="setBudgetButton">Set Budget</button>
-        
-        <label for="chargeInput">Charge amount:</label>
-        <input id="chargeInput" type="number" placeholder="12.50">
-        <button id="addChargeButton">Add Charge</button>
+        <div class="history_controls">
+            <!-- show charges button -->
+            <button id="toggleChargesButton">Show charges</button>
+            <ul id="chargesList" hidden></ul>
+        </div>
 
-        <!-- show charges button -->
-        <button id="toggleChargesButton">Show charges</button>
-        <ul id="chargesList" hidden></ul>
+        <div class="budget-controls">
+            <!-- <label for="budgetInput">Monthly budget:</label> -->
+            <input id="budgetInput" type="number" placeholder="Monthly Budget">
+            <button id="setBudgetButton">Set Budget</button>
+        </div>
 
-        <!-- creates button for monthly reset -->
-        <button id="resetMonthButton">Reset Month</button>
+        <div class="reset-controls">
+            <!-- creates button for monthly reset -->
+            <button id="resetMonthButton">Reset Month</button>
+        </div>
 
-    
+    </div>
     
     <script src="script.js"></script>
 </body>

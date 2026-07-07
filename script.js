@@ -20,7 +20,7 @@ function updateDisplay() {
         "$" + remaining.toFixed(2);
 }
 // put saved budget back into the input box
-document.querySelector("#budgetInput").value = budget;
+// document.querySelector("#budgetInput").value = budget;
 
 // display saved remaining balance when page loads
 updateDisplay();
@@ -85,6 +85,8 @@ document.querySelector("#addChargeButton").addEventListener("click", function ()
     // 
     updateChargesList();
 
+    // replace the charge amount with "Charge Amount"
+    document.querySelector("#chargeInput").value = "Charge Amount";
 });
 
 // upon clicking "Show Charges" button:
