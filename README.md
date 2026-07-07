@@ -28,7 +28,4 @@ Future Improvements:
 - Import transactions automatically from credit card accounts
 - Support multiple credit cards
 
-
-![Spend Limit Tracker][def]
-
-[def]: spend-limit-tracker-image-2.png
+<img width="315" height="341" alt="image" src="https://github.com/user-attachments/assets/5851456e-0e56-4fd6-8aac-70c0dc9550b3" />
