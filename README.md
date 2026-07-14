@@ -3,6 +3,8 @@ Spend Limit Tracker
 
 A simple budgeting application built with vanilla JavaScript.
 
+![Spend Limit Tracker](images/v1-1st-locally-saved-screenshot.png)
+
 Features:
 - Set a monthly spending budget
 - Add charges with the current date
@@ -27,5 +29,3 @@ Future Improvements:
 - Mobile-responsive design
 - Import transactions automatically from credit card accounts
 - Support multiple credit cards
-
-<img width="315" height="341" alt="image" src="https://github.com/user-attachments/assets/5851456e-0e56-4fd6-8aac-70c0dc9550b3" />
