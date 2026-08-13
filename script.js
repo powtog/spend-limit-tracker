@@ -16,9 +16,17 @@ function updateDisplay() {
 
     const remaining = budget - totalSpent;
 
-    document.querySelector("#budgetDisplay").textContent = 
-        "$" + remaining.toFixed(2);
+    const [dollars, cents] = remaining.toFixed(2).split(".");
+// separates remaining budget into three pieces for styling purposes
+    document.querySelector("#budgetDisplay").innerHTML = `
+    <span class="currency">$</span>
+    <span class="dollars">${dollars}</span>
+    <span class="cents">.${cents}</span>
+    `;
 }
+//     document.querySelector("#budgetDisplay").textContent = 
+//         "$" + remaining.toFixed(2);
+// }
 // put saved budget back into the input box
 // document.querySelector("#budgetInput").value = budget;
 

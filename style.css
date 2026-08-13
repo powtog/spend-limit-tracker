@@ -1,10 +1,19 @@
+/* ===========================================================
+   APP
+   =========================================================== */
 /* set width of app to aproximate phone screen size */
+
 .app {
     width: 350px;
-    border: 1px solid lightgray;
-    
-    
+    border: 1px solid lightgray;  
 }
+/* Budgets over hundreds place don't fit on the screen */
+/* Address that in version 2 */
+
+
+/* ===========================================================
+   BODY
+   =========================================================== */
 
 body {
     display: flex;
@@ -13,37 +22,250 @@ body {
     padding-top: 40px;
 }
 
+
+/* ===========================================================
+   REMAINING BALANCE
+   =========================================================== */
+
 .remaining-balance h2 {
     padding-left: 15px;
-    font-family: "Trebuchet MS", sans-serif;
-    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #5F6B7A;
 }
+
+
+/* ===========================================================
+   BUDGET DISPLAY
+   =========================================================== */
 
 #budgetDisplay {
-    font-size: 5.5rem;
-    font-weight: bold;
-    text-align: center;
-    font-family: "Trebuchet MS", sans-serif;
-    color: dodgerblue;
-    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin-top: -20px;
+    margin-bottom: -25px;
 }
 
+#budgetDisplay .currency {
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+
+    color: #2494ff;
+
+    text-shadow:
+        0 -1px 0 rgba(255,255,255,.35),
+        0 2px 4px rgba(0,0,0,.12),
+        0 6px 10px rgba(0,0,0,.05);
+
+    padding-right: 10px;    
+}
+
+#budgetDisplay .dollars{
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8rem;
+    font-weight: 900;
+
+    color: #2494ff;
+
+    letter-spacing: -3px;
+
+    text-shadow:
+        0 -1px 0 rgba(255,255,255,.35),
+        0 2px 4px rgba(0,0,0,.12),
+        0 6px 10px rgba(0,0,0,.05);
+}
+
+#budgetDisplay .cents {
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+
+    color: #2494ff;
+
+    text-shadow:
+        0 -1px 0 rgba(255,255,255,.35),
+        0 2px 4px rgba(0,0,0,.12),
+        0 6px 10px rgba(0,0,0,.05);
+}
+
+
+/* ===========================================================
+   HEADER
+   =========================================================== */
+
 .header {
-    background-color:dodgerblue;
+    background-color:#1E88E5;
     color: whitesmoke;
     text-align: left;
      margin-top: -22px;
-
+    box-shadow: 0 3px 8px rgba(0,0,0,.20);
 }
 
 .header h1 {
     padding-left: 10px;
     padding-top: 10px;
     margin-bottom: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 0 2px 4px rgba(0,0,0,.25);
 }
 
 .header p {
     margin-top: 2px;
     padding-left: 15px;
     padding-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* ===========================================================
+   SHOW CHARGES
+   =========================================================== */
+
+.history-controls {
+    text-align: center;
+    margin-top: 18px;
+    margin-bottom: 35px;
+}
+
+#toggleChargesButton {
+    background: none;
+    border: none;
+    padding: 0;
+
+    color: #505C6B;
+
+    font-size: .95rem;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* ===========================================================
+   CHARGE + BUDGET CONTROLS
+   =========================================================== */
+
+.charge-controls,
+.budget-controls {
+    display: grid;
+    grid-template-columns: 1fr 110px;
+    gap: 8px;
+
+    align-items: center;
+
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.charge-controls {
+    margin-bottom: 10px;
+}
+
+
+/* ===========================================================
+   INPUTS
+   =========================================================== */
+
+.charge-controls input,
+.budget-controls input {
+    width: 100%;
+    height: 32px;
+
+    padding: 0 10px;
+
+    background: #fafafa;
+
+    border: 1px solid #bcc5ce;
+    border-radius: 2px;
+
+    color: #5b6570;
+
+    font-size: .95rem;
+
+    box-sizing: border-box;
+}
+
+
+/* ===========================================================
+   ADD CHARGE + SET BUDGET
+   =========================================================== */
+
+#addChargeButton,
+#setBudgetButton {
+    background: none;
+    border: none;
+    padding: 0;
+
+    font-size: .95rem;
+    font-weight: 600;
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+
+/* Primary action */
+
+#addChargeButton {
+    color: #1E78D7;
+    font-weight: 600;
+}
+
+
+/* Secondary action */
+
+#setBudgetButton {
+    color: #505C6B;
+}
+
+
+/* ===========================================================
+   RESET
+   =========================================================== */
+
+.reset-controls {
+    text-align: center;
+
+    padding-top: 22px;
+    padding-bottom: 10px;
+}
+
+#resetMonthButton {
+    background: none;
+    border: none;
+    padding: 0;
+
+    color: #C93A46;
+
+    font-size: .90rem;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* ===========================================================
+   INTERACTION
+   =========================================================== */
+
+button {
+    transition:
+        color .15s ease,
+        opacity .15s ease;
+}
+
+button:hover {
+    text-decoration: underline;
+    opacity: .85;
+}
+
+button:active {
+    opacity: .65;
 }
