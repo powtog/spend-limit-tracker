@@ -3,7 +3,7 @@ Spend Limit Tracker
 
 A simple budgeting application built with vanilla JavaScript.
 
-![Spend Limit Tracker](images/v1-1st-locally-saved-screenshot.png)
+![Spend Limit Tracker](images/images/v1-final-ui.png)
 
 Features:
 - Set a monthly spending budget
