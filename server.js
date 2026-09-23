@@ -4,6 +4,9 @@ const express = require("express");
 // Create an Express application.
 const app = express();
 
+// Serve frontend files from this project.
+app.use(express.static(__dirname));
+
 // Respond to GET requests at /api/test.
 app.get("/api/test", function (req, res) {
 
