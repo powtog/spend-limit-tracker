@@ -174,3 +174,16 @@ document.querySelector("#setBudgetButton").addEventListener("click", function ()
 // FIXME: beginning of a UX feature to display only a few recent charges 
 // function showThreeMostRecentCharges() {   
 // }
+
+// Send a GET request from the frontend to the backend's /api/test route.
+fetch("/api/test")
+    // Wait for the backend to respond, then convert the JSON response into a JavaScript object.
+    .then(function (response) {
+        return response.json();
+    })
+
+    // Once the JSON has been converted, store it in "data" and print it to the browser console.
+    .then(function (data) {
+        console.log(data);
+    });
+
