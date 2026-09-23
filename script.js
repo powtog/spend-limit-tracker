@@ -5,32 +5,9 @@ let showCharges = true;
 // search local storage for existing array else use an empty array
 // let charges = JSON.parse(localStorage.getItem("charges")) || [];
 
-let charges = [
-    {
-        amount: 22.99, 
-        date: "8/28/2026"
-    },
-    {
-        amount: 17.50, 
-        date: "8/27/2026"
-    },
-    {
-        amount: 13.67, 
-        date: "8/26/2026"
-    },
-    {
-        amount: 12.50, 
-        date: "8/25/2026"
-    },
-    {
-        amount: 42.19,  
-        date: "8/24/2026"
-    },
-    {
-        amount: 7.25, 
-        date: "8/23/2026"
-    }
-];
+// Create an empty charges array. 
+// Transaction data will be loaded from the backend.
+let charges = [];
 
 // set budget equal to remaining budget or 0
 let budget = Number(localStorage.getItem("budget")) || 0;
@@ -58,8 +35,11 @@ function updateDisplay() {
 // document.querySelector("#budgetInput").value = budget;
 
 // display saved remaining balance when page loads
-updateDisplay();
-updateChargesList();
+
+
+// updateDisplay();
+// updateChargesList();
+
 
 // create and maintain the user's list of charges
 function updateChargesList() {
@@ -175,15 +155,29 @@ document.querySelector("#setBudgetButton").addEventListener("click", function ()
 // function showThreeMostRecentCharges() {   
 // }
 
-// Send a GET request from the frontend to the backend's /api/test route.
-fetch("/api/test")
-    // Wait for the backend to respond, then convert the JSON response into a JavaScript object.
+
+// Send a GET request to the backend for transaction data.
+fetch("/api/transactions")
+
+    // Wait for the backend to respond, then convert the JSON response
+    // into a JavaScript array.
     .then(function (response) {
         return response.json();
     })
 
-    // Once the JSON has been converted, store it in "data" and print it to the browser console.
+    // Once the transaction array is available, store it in charges.
     .then(function (data) {
-        console.log(data);
-    });
+        charges = data;
 
+        // Recalculate the remaining budget using the transactions
+        // received from the backend.
+        updateDisplay();
+
+        // Display the transactions received from the backend.
+        updateChargesList();
+    })
+
+    // Print an error if the transaction request fails. 
+    .catch(function (error) {
+        console.error("Error loading tranactions:", error);
+    });
