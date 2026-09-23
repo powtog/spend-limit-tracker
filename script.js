@@ -172,6 +172,5 @@ document.querySelector("#setBudgetButton").addEventListener("click", function ()
     updateDisplay();
 });
 // FIXME: beginning of a UX feature to display only a few recent charges 
-// function showThreeMostRecentCharges() {
-    
-}
+// function showThreeMostRecentCharges() {   
+// }
