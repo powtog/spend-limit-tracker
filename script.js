@@ -1,9 +1,36 @@
 
 // 
-let showCharges = false;
+let showCharges = true;
 
 // search local storage for existing array else use an empty array
-let charges = JSON.parse(localStorage.getItem("charges")) || [];
+// let charges = JSON.parse(localStorage.getItem("charges")) || [];
+
+let charges = [
+    {
+        amount: 22.99, 
+        date: "8/28/2026"
+    },
+    {
+        amount: 17.50, 
+        date: "8/27/2026"
+    },
+    {
+        amount: 13.67, 
+        date: "8/26/2026"
+    },
+    {
+        amount: 12.50, 
+        date: "8/25/2026"
+    },
+    {
+        amount: 42.19,  
+        date: "8/24/2026"
+    },
+    {
+        amount: 7.25, 
+        date: "8/23/2026"
+    }
+];
 
 // set budget equal to remaining budget or 0
 let budget = Number(localStorage.getItem("budget")) || 0;
@@ -32,6 +59,7 @@ function updateDisplay() {
 
 // display saved remaining balance when page loads
 updateDisplay();
+updateChargesList();
 
 // create and maintain the user's list of charges
 function updateChargesList() {
@@ -143,3 +171,7 @@ document.querySelector("#setBudgetButton").addEventListener("click", function ()
 
     updateDisplay();
 });
+// FIXME: beginning of a UX feature to display only a few recent charges 
+// function showThreeMostRecentCharges() {
+    
+}
