@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/powtog/spend-limit-tracker#readme",
   "dependencies": {
-    "express": "^5.2.1"
+    "dotenv": "^18.0.3",
+    "express": "^5.2.1",
+    "plaid": "^47.0.0"
   }
 }
