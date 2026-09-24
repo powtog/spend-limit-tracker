@@ -1,11 +1,18 @@
-// Load Express.
+// Load Express to create and manage our backend server.
 const express = require("express");
+
+
+// Load Node's built-in path module to construct file and directory paths.
+const path = require("path");
+
 
 // Create an Express application.
 const app = express();
 
-// Serve frontend files from this project.
-app.use(express.static(__dirname));
+
+// Serve frontend files only from the public directory.
+app.use(express.static(path.join(__dirname, "public")));
+
 
 // Respond to GET requests at /api/test.
 app.get("/api/test", function (req, res) {
