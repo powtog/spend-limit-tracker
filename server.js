@@ -95,6 +95,46 @@ app.get("/api/transactions", function (req, res) {
 });
 
 
+// Create a Link token when the frontend requests one.
+app.post("/api/link-token", async function (req, res) {
+
+    // Configure a new Plaid Link session for our Sandbox test user.
+    const linkTokenRequest = {
+        user: {
+            client_user_id: "sandbox-user-1"
+        },
+        client_name: "Spend Limit Tracker",
+        products: ["transactions"],
+        country_codes: ["US"],
+        language: "en"
+    };
+
+    try {
+        // Ask Plaid Sandbox to create a Link token.
+        const response = await plaidClient.linkTokenCreate(linkTokenRequest);
+
+        // Send the temporary Link token back to the frontend.
+        res.json({
+            link_token: response.data.link_token
+        });
+
+    } catch (error) {
+        // Log the error code without exposing our API credentials.
+        console.error(
+            "Plaid error details:", 
+            error.response?.data?.error_message || "No additional details available"
+            // "Plaid Link token error:",
+            // error.response?.data?.error_code || error.code || "Unknown error"
+        );
+
+        // Tell the frontend that the request failed. 
+        res.status(502).json({
+            error: "Could not create Plaid Link token."
+        });
+    }
+});
+
+
 // Tell the application to listen on port 3000.
 app.listen(3000, function () {
 
