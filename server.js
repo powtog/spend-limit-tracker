@@ -119,10 +119,11 @@ app.post("/api/link-token", async function (req, res) {
         });
 
     } catch (error) {
-        // Log the error code without exposing our API credentials.
+        // Log the error message without exposing our API credentials.
         console.error(
             "Plaid error details:", 
             error.response?.data?.error_message || "No additional details available"
+            // Log the error code without exposing our API credentials.
             // "Plaid Link token error:",
             // error.response?.data?.error_code || error.code || "Unknown error"
         );
