@@ -1,3 +1,9 @@
+
+
+// Load environment variables from .env into process.env.
+require("dotenv").config();
+
+
 // Load Express to create and manage our backend server.
 const express = require("express");
 
@@ -6,8 +12,36 @@ const express = require("express");
 const path = require("path");
 
 
+// Import the tools needed to configure and communicate with Plaid.
+const { Configuration, PlaidApi, PlaidEnvironments } = require("plaid");
+
+
 // Create an Express application.
 const app = express();
+
+
+// Verify that our Sandbox credentials are configured.
+if (
+    process.env.PLAID_ENV !== "sandbox" ||
+    !process.env.PLAID_CLIENT_ID ||
+    !process.env.PLAID_SECRET
+) {
+    throw new Error("Plaid Sandbox configuration is missing or invalid.");
+}
+
+// Configure the Plaid API client to use the Sandbox environment.
+const plaidConfig = new Configuration({
+    basePath: PlaidEnvironments.sandbox,
+    baseOptions: {
+        headers: {
+            "PLAID-CLIENT-ID": process.env.PLAID_CLIENT_ID,
+            "PLAID-SECRET": process.env.PLAID_SECRET
+        }
+    }
+});
+
+// Create our Plaid API client using the configuration.
+const plaidClient = new PlaidApi(plaidConfig);
 
 
 // Serve frontend files only from the public directory.
